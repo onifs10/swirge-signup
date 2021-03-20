@@ -1,4 +1,5 @@
 import { useState } from "react";
+import hashPassword from "./shared_functions/hash";
 
 const Form = () => {
   const [name ,setName] = useState('');
@@ -11,7 +12,12 @@ const Form = () => {
       emailInputValidate(target.validity.typeMismatch)
   }
   const submitForm = () =>{
-
+    if(filled){
+      console.log(hashPassword(password));
+    }else{
+      console.log('form not filled');
+    }
+    
   }
   return (
     <div className='form-outter-wrapper'>

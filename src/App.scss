@@ -61,7 +61,7 @@
         }  
        
         &:invalid{
-          &:focus, &[mismatch="true"]{
+          &:focus, &[match="false"]{
             border-color: rgba($color: red, $alpha: .5);
             + label{
               .content{

@@ -2,21 +2,45 @@ import { useState } from "react";
 import hashPassword from "./shared_functions/hash";
 import logo from './logo.svg';
 import validateEmailRegex from "./shared_functions/EmailRegex";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const Form = () => {
   const [name ,setName] = useState('');
-  const [validEmial, emailInputValidate] = useState(false);
+  const [validEmial, emailInputValidate] = useState(true);
   const [email ,setEmail] = useState('');
   const [password ,setPassword] = useState('');
-  var filled = password && !validEmial && email;
+  var filled = password && validEmial && email;
   const updateEmail = (target) => {
       setEmail(target.value)
-      emailInputValidate(!validateEmailRegex(target.value))
+      emailInputValidate(validateEmailRegex(target.value))
+      
   }
   const submitForm = () =>{
-    if(filled){
-      console.log(hashPassword(password));
+    if(filled && validateEmailRegex(email)){
+        console.log(hashPassword(password))
+        toast.success('form submitted',
+        {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+        })
+        setEmail('')
+        setPassword('')
+        setName('')
     }else{
-      console.log('form not filled');
+      toast.error('incorrect input',
+      {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+      }
+      )
     }
     
   }
@@ -26,6 +50,7 @@ const Form = () => {
               <img src={logo} className="App-logo" alt="logo" />
         </div>
       <div className='form-wrapper rounded bg-gray-100 p-4'>
+        <ToastContainer/>
         <span className="form-head">Sign Up</span>
         <div className="container mx-auto p-4 bg-gray-50 rounded">
         <form
@@ -52,7 +77,7 @@ const Form = () => {
                 type="email" 
                 name="email" 
                 id="email"
-                mismatch={validEmial.toString()}
+                match={validEmial.toString()}
                 onChange = {e => updateEmail(e.target)}
                 value = {email}
                 />

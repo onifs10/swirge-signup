@@ -17,17 +17,6 @@
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
 .form{
   display: flex;
   justify-content: center;
@@ -117,10 +106,23 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: rgba($color: #585858, $alpha: .3); 
+  background-color: #282c34; 
   div.form-wrapper{
     width: 90%;
     min-width: 300px;
+    .form-head{
+      font-size: 1rem;
+      line-height: 2rem;
+      color: #282c34;
+      font-weight: 600;
+    }
+  }
+  div.logo-wrapper{
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-flow: row wrap;
   }
 }
 
@@ -143,6 +145,9 @@
     div.form-wrapper{
       width: 80%;
     }
+    div.logo-wrapper{
+      width: 80%;
+    }
   }
 }
 //Tablet
@@ -152,6 +157,9 @@
     flex-flow: row wrap;
     justify-content: flex-end;
     div.form-wrapper{
+      width: 50%;
+    }
+    div.logo-wrapper{
       width: 50%;
     }
   }
@@ -164,7 +172,9 @@
     flex-flow: row wrap;
     div.form-wrapper{
       width: 40%;
-      min-width: 300px;
+    }
+    div.logo-wrapper{
+      width: 60%;
     }
   }
   

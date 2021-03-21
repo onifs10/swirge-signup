@@ -1,6 +1,7 @@
 import { useState } from "react";
 import hashPassword from "./shared_functions/hash";
-
+import logo from './logo.svg';
+import validateEmailRegex from "./shared_functions/EmailRegex";
 const Form = () => {
   const [name ,setName] = useState('');
   const [validEmial, emailInputValidate] = useState(false);
@@ -9,7 +10,7 @@ const Form = () => {
   var filled = password && !validEmial && email;
   const updateEmail = (target) => {
       setEmail(target.value)
-      emailInputValidate(target.validity.typeMismatch)
+      emailInputValidate(!validateEmailRegex(target.value))
   }
   const submitForm = () =>{
     if(filled){
@@ -21,7 +22,11 @@ const Form = () => {
   }
   return (
     <div className='form-outter-wrapper'>
+        <div className="logo-wrapper">
+              <img src={logo} className="App-logo" alt="logo" />
+        </div>
       <div className='form-wrapper rounded bg-gray-100 p-4'>
+        <span className="form-head">Sign Up</span>
         <div className="container mx-auto p-4 bg-gray-50 rounded">
         <form
          onSubmit={e => {

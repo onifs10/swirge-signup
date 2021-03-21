@@ -9,7 +9,7 @@ const Form = () => {
   const [validEmial, emailInputValidate] = useState(true);
   const [email ,setEmail] = useState('');
   const [password ,setPassword] = useState('');
-  var filled = password && validEmial && email;
+  var filled = password && validEmial && name;
   const updateEmail = (target) => {
       setEmail(target.value)
       emailInputValidate(validateEmailRegex(target.value))
